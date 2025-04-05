@@ -1,0 +1,13 @@
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}
+Received: {"text": "Hello from Extension and Cosmin!"}

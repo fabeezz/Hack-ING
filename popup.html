@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accessibility Settings</title>
+    <style>
+      body { padding: 10px; width: 250px; }
+      button { margin: 5px 0; padding: 5px; width: 100%; }
+      label { display: block; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <h3>Accessibility Settings</h3>
+    <label for="disability">Select your need:</label>
+    <select id="disability">
+      <option value="none">None</option>
+      <option value="vision">Low Vision</option>
+      <option value="motor">Motor Difficulty</option>
+    </select>
+    <button id="save">Save</button>
+
+    <!-- Vision-specific controls -->
+    <div id="vision-controls" style="display: none;">
+      <label>Vision Options:</label>
+      <button id="read">Read Selected Text</button>
+      <button id="toggle-contrast">Toggle High Contrast</button>
+      <button id="toggle-zoom">Toggle Zoom (150%)</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

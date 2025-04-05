@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Accessibility Enhancer",
+    "version": "1.0",
+    "description": "Customizes websites for accessibility based on user needs.",
+    "permissions": ["activeTab", "storage", "tabs", "scripting"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }

@@ -62,7 +62,24 @@ function applyAccessibility(disability) {
       document.removeEventListener('keydown', scrollHandler);
       document.addEventListener('keydown', scrollHandler);
       console.log('Motor settings applied');
-    }
+    } else if (disability === 'colorblind') {
+      const style = document.createElement('style');
+      style.id = 'accessibility-style';
+      style.textContent = 
+        `html {
+          filter: invert(100%) hue-rotate(180deg) !important; /* Basic colorblind adjustment */
+        }
+        a, button {
+          border: 2px solid #000 !important; /* Ensure clickable elements stand out */
+        }
+        :focus {
+          outline: 3px solid #00f !important; /* Focus highlighting */
+        }`
+      ;
+      document.head.appendChild(style);
+      console.log('Colorblind mode applied');
+    } 
+
   }
   
   // Scroll handler for motor disability

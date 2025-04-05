@@ -247,3 +247,16 @@ function toggleCursorOutlineFunc(isEnabled) {
     console.log('Cursor outline disabled');
   }
 }
+
+document.getElementById('adhd-toggle').addEventListener('change', (e) => {
+  const show = e.target.checked;
+
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tabId = tabs[0].id;
+
+    chrome.tabs.sendMessage(tabId, {
+      action: show ? 'injectAdhdVideo' : 'removeAdhdVideo'
+    });
+  });
+});
+

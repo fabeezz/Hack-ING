@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accessibility Toolbox</title>
+    <style>
+      body {
+        width: 200px;
+        font-family: Arial, sans-serif;
+        padding: 10px;
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #status {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="sendMessageBtn">Send Message to Python</button>
+    <div id="status">Waiting for interaction...</div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Audio Settings</title>
+    <style>
+      body {
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Audio Settings</h2>
+    <button id="muteAudio">Mute Audio</button>
+    <button id="unmuteAudio">Unmute Audio</button>
+    <script>
+      document.getElementById("muteAudio").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "muteAudio" });
+        });
+      });
+      document.getElementById("unmuteAudio").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "unmuteAudio" });
+        });
+      });
+    </script>
+  </body>
+</html>

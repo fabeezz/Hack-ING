@@ -3,7 +3,7 @@
     "name": "Accessibility Enhancer",
     "version": "1.0",
     "description": "Customizes websites for accessibility based on user needs.",
-    "permissions": ["activeTab", "storage", "tabs", "scripting"],
+    "permissions": ["activeTab", "storage", "tabs", "scripting", "http://localhost:5050/*"],
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
@@ -12,5 +12,11 @@
     ],
     "action": {
       "default_popup": "popup.html"
+    },
+    "web_accessible_resources": [
+    {
+      "resources": ["brightness.html", "audio.html", "zoom.html"],
+      "matches": ["<all_urls>"]
     }
+  ]
   }

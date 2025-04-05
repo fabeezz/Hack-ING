@@ -50,3 +50,36 @@ document.getElementById('save').addEventListener('click', () => {
       chrome.tabs.sendMessage(tabs[0].id, { action: 'toggleZoom' });
     });
   });
+
+  async function sendBrightnessRequest(action) {
+    try {
+      const response = await fetch("http://localhost:5050/brightness", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: action }),
+      });
+      const data = await response.json();
+      if (data.status === "success") {
+        document.getElementById(
+          "status"
+        ).textContent = `Status: Brightness set to ${data.brightness}%`;
+      } else {
+        document.getElementById(
+          "status"
+        ).textContent = `Status: Error - ${data.message}`;
+      }
+    } catch (error) {
+      document.getElementById(
+        "status"
+      ).textContent = `Status: Failed to connect to server (${error.message})`;
+    }
+  }
+  
+  document.getElementById("brightnessUp").addEventListener("click", () => {
+    sendBrightnessRequest("increase");
+  });
+  
+  document.getElementById("brightnessDown").addEventListener("click", () => {
+    sendBrightnessRequest("decrease");
+  });
+   

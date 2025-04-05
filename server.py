@@ -20,9 +20,9 @@ def adjust_brightness():
     current_brightness = sbc.get_brightness()[0]
     
     if action == 'increase':
-        new_brightness = min(100, current_brightness + 10)
+        new_brightness = 100
     elif action == 'decrease':
-        new_brightness = max(0, current_brightness - 10)
+        new_brightness = 50
     else:
         return {"status": "error", "message": "Invalid action"}, 400
     

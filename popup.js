@@ -248,15 +248,33 @@ function toggleCursorOutlineFunc(isEnabled) {
   }
 }
 
+// Când se schimbă starea toggle-ului
 document.getElementById('adhd-toggle').addEventListener('change', (e) => {
   const show = e.target.checked;
 
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tabId = tabs[0].id;
-
-    chrome.tabs.sendMessage(tabId, {
-      action: show ? 'injectAdhdVideo' : 'removeAdhdVideo'
+  // Salvează starea în chrome.storage
+  chrome.storage.sync.set({ adhdVideoEnabled: show }, () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tabId = tabs[0].id;
+      chrome.tabs.sendMessage(tabId, {
+        action: show ? 'injectAdhdVideo' : 'removeAdhdVideo'
+      });
     });
   });
 });
+
+// La deschiderea popup-ului, setează starea toggle-ului
+chrome.storage.sync.get(['adhdVideoEnabled'], (result) => {
+  const adhdVideoEnabled = result.adhdVideoEnabled || false; // Default: false
+  document.getElementById('adhd-toggle').checked = adhdVideoEnabled;
+
+  // Trimite mesaj pentru a arăta sau ascunde video-ul pe baza stării
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tabId = tabs[0].id;
+    chrome.tabs.sendMessage(tabId, {
+      action: adhdVideoEnabled ? 'injectAdhdVideo' : 'removeAdhdVideo'
+    });
+  });
+});
+
 

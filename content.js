@@ -156,3 +156,36 @@ function applyAccessibility(disability) {
       }
     });
   });
+
+  function injectAdhdVideo() {
+    // Evită dublarea
+    if (document.getElementById('adhd-relax-video')) return;
+  
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/u7kdVe8q5zs?autoplay=1&mute=1&loop=1&playlist=u7kdVe8q5zs';
+    iframe.id = 'adhd-relax-video';
+  
+    Object.assign(iframe.style, {
+      position: 'fixed',
+      bottom: '10px',
+      left: '10px',
+      width: '400px',
+      height: '200px',
+      zIndex: '999999',
+      border: '3px solid #222',
+      borderRadius: '12px',
+      boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+    });
+  
+    document.body.appendChild(iframe);
+  }
+
+  function removeAdhdVideo() {
+    const existing = document.getElementById('adhd-relax-video');
+    if (existing) existing.remove();
+  }
+  
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message.action === 'injectAdhdVideo') injectAdhdVideo();
+    if (message.action === 'removeAdhdVideo') removeAdhdVideo();
+});
